@@ -1,0 +1,194 @@
+//Muhammad Farhan 
+//13020190103
+//Program menghitung nilai akhir mahasiswa dan menghitung gaji karyawan
+
+
+//kasus I
+#include<stdio.h>
+#include<conio.h>
+#include<iostream>
+
+using namespace std;
+
+struct mahasiswa
+{
+	string nama, grade;
+	int uts, uas, tugasmandiri, tugasproyek, kehadiran, NA;
+};
+
+int main()
+{
+	int i, jumlah;
+	struct mahasiswa mhs[100];
+
+	cout<<"\nMasukkan jumlah Mahasiswa :";
+	cin>>jumlah;
+	
+	for(i=0; i<jumlah; i++){
+cout<<"\t------------------ PROGRAM MENGHITUNG NILAI AKHIR ------------------"<<endl<<endl;
+cout<<"\tMasukkan Nama Mahasiswa : ";		cin >> mhs[i].nama;
+cout<<"\tMasukkan Nilai uts : ";			cin >> mhs[i].uts;
+cout<<"\tMasukkan Nilai uas : "; 			cin >> mhs[i].uas;
+cout<<"\tMasukkan Nilai tugas mandiri : "; 	cin >> mhs[i].tugasmandiri;
+cout<<"\tMasukkan Nilai tugas proyek : "; 	cin >> mhs[i].tugasproyek;
+cout<<"\tMasukkan Nilai kehadiran : "; 		cin >> mhs[i].kehadiran;
+
+	
+	mhs[i].NA = (mhs[i].uts * 0.20) + (mhs[i].uas * 0.25) + (mhs[i].tugasmandiri * 0.20) +
+				(mhs[i].tugasproyek * 0.20) + (mhs[i].kehadiran * 0.15); 
+
+
+if(mhs[i].NA>=85)
+{
+mhs[i].grade = "A (4.00 )";
+}
+else if (mhs[i].NA>=81)
+{
+mhs[i].grade = "A- (3.75 )";
+}
+
+else if (mhs[i].NA>=76)
+{
+mhs[i].grade = "B+ (3.50)";
+}
+
+else if (mhs[i].NA>=71)
+{
+mhs[i].grade = "B (3.00)";
+}
+
+else if (mhs[i].NA>=66)
+{
+mhs[i].grade= "B- (2.75)";
+}
+
+else if (mhs[i].NA>=61)
+{
+mhs[i].grade = "C+ (2.50)";
+}
+
+else if (mhs[i].NA>=51)
+{
+mhs[i].grade= "C (2.00)";
+}
+
+else if (mhs[i].NA>=45)
+{
+mhs[i].grade = "D (1.00)";
+}
+
+else
+{
+mhs[i].grade = "E (0.00)";
+
+}
+}
+
+system("cls");
+cout<<"\t----------------------------------------------------------------------------"<<endl;
+cout<<"\t			Hasil Nilai Akhir Mahasiswa 						 "<<endl;
+cout<<"\t----------------------------------------------------------------------------"<<endl;
+cout<<"\tJumlah Mahasiswa : "<<jumlah<<endl;
+cout<<endl;
+for (i=0; i<jumlah; i++)
+{
+	cout<<"\tNama Mahasiswa ="<<mhs[i].nama<<endl;
+	cout<<"\tNilai yang dihasilkan : "<<endl;
+	cout<<"\t  Nilai UTS 		 = "<<mhs[i].uts<<endl;
+	cout<<"\t  Nilai UAS 		 = "<<mhs[i].uas<<endl;
+	cout<<"\t  Nilai tugas mandiri 	 = "<<mhs[i].tugasmandiri<<endl;
+	cout<<"\t  Nilai tugas proyek  	 = "<<mhs[i].tugasproyek<<endl;
+	cout<<"\t  kehadiran 		 = "<<mhs[i].kehadiran<<endl;
+	cout<<"\tMahasiswa Atas Nama "<<mhs[i].nama<<" memperoleh nilai akhir sebesar "<<mhs[i].NA<<endl;
+	cout<<"\tGrade nilai yang didapat adalah "<<mhs[i].grade<<endl;
+	cout<<"\t_________________________________________________________________________"<<endl;
+}
+return 0;
+}
+
+//kasus II
+
+
+#include<stdio.h>
+#include<conio.h>
+#include<iostream> 
+
+using namespace std;
+
+struct karyawan 
+{
+	string nama;
+	int nik, golongan, gnormal,upah,glembur,total;
+	int jam,jlembur,jtidaklembur;
+};
+
+int main() 
+{
+	int i, jumlah;
+	struct karyawan k[100];
+
+	cout<<"\nMasukkan jumlah Karyawan :";
+	cin>>jumlah;
+	
+	for(i=0; i<jumlah; i++){ 
+cout<<"\t------------------ PROGRAM MENGHITUNG GAJI KARYAWAN CV.ABC------------------"<<endl<<endl; 
+cout<<"\tMasukkan Nik (Nomor Induk Karyawan) : ";			cin >> k[i].nik;
+cout<<"\tMasukkan Nama karyawan : ";		cin >> k[i].nama;
+cout<<"\tMasukkan Golongan (1,2,3,4) : ";			cin >> k[i].golongan;
+cout<<"\tMasukkan Jam Kerja : "; 			cin >> k[i].jam;
+
+	if(k[i].jam>=40){ 
+		k[i].jlembur = k[i].jam - 40;
+		k[i].jtidaklembur= 40;
+	}
+	else{
+			k[i].jlembur =0;
+			k[i].jtidaklembur= k[i].jam;
+	}
+if(k[i].golongan ==1) 
+{
+k[i].upah = 3000 ;
+}
+else if (k[i].golongan ==2)
+{
+k[i].upah = 3500  ;
+}
+
+else if (k[i].golongan == 3)
+{
+k[i].upah = 4000 ;
+}
+
+else if (k[i].golongan == 4)
+{
+k[i].upah = 5000 ;
+}
+
+else
+{
+k[i].upah = 0;
+}
+
+k[i].glembur = k[i].jlembur * 1.5 * k[i].upah ; 
+k[i].gnormal = k[i].upah * k[i].jtidaklembur ; 
+k[i].total= k[i].gnormal + k[i].glembur; 
+}
+
+system("cls"); 
+cout<<"\t---------------------------------------------------------------------------"<<endl;
+cout<<"\t			Hasil Total Gaji Karyawan CV.ABC "<<endl;
+cout<<"\t---------------------------------------------------------------------------"<<endl;
+cout<<"\tJumlah Karyawan CV.ABC : "<<jumlah<<endl;
+cout<<endl;
+for (i=0; i<jumlah; i++)
+{
+	cout<<"\tNik (Nomor Induk Karyawan)	= "<<k[i].nik<<endl;
+	cout<<"\tNama Karyawan			= "<<k[i].nama<<endl;
+	cout<<"\tGolongan			= "<<k[i].golongan<<endl;
+	cout<<"\tJam kerja			= "<<k[i].jam<<endl;
+	cout<<"\tJam lembur			= "<<k[i].jlembur<<endl;
+	cout<<"\tTotal Gaji karyawan		= Rp."<<k[i].total<<endl;
+	cout<<"\t_______________________________________________________________________"<<endl<<endl;
+	}
+return 0; 
+}
